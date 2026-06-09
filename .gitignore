@@ -1,0 +1,12 @@
+# Rust build artifacts
+target/
+
+# Cache fichier généré par l'outil
+.codegraph_cache.json
+
+# Fichier de sortie généré
+output.html
+
+# OS
+.DS_Store
+Thumbs.db

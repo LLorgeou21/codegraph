@@ -1,0 +1,12 @@
+[package]
+name = "analysis"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+core = { path = "../core" }
+parsers = { path = "../parsers" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+petgraph = { workspace = true }
+anyhow = { workspace = true }

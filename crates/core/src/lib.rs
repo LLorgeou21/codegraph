@@ -7,6 +7,7 @@ use std::collections::HashMap;
 pub enum NodeKind {
     Module,
     Class,
+    Struct,   // distinct from Class (Rust structs, C++ structs)
     Function,
     Method,
     Property,
@@ -16,10 +17,11 @@ pub enum NodeKind {
 impl std::fmt::Display for NodeKind {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            NodeKind::Module => write!(f, "module"),
-            NodeKind::Class => write!(f, "class"),
+            NodeKind::Module   => write!(f, "module"),
+            NodeKind::Class    => write!(f, "class"),
+            NodeKind::Struct   => write!(f, "struct"),
             NodeKind::Function => write!(f, "function"),
-            NodeKind::Method => write!(f, "method"),
+            NodeKind::Method   => write!(f, "method"),
             NodeKind::Property => write!(f, "property"),
             NodeKind::Constant => write!(f, "constant"),
         }
@@ -41,13 +43,13 @@ pub enum EdgeKind {
 impl std::fmt::Display for EdgeKind {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            EdgeKind::Contains => write!(f, "contains"),
-            EdgeKind::Imports => write!(f, "imports"),
-            EdgeKind::Inherits => write!(f, "inherits"),
-            EdgeKind::Calls => write!(f, "calls"),
-            EdgeKind::UsesType => write!(f, "uses_type"),
+            EdgeKind::Contains    => write!(f, "contains"),
+            EdgeKind::Imports     => write!(f, "imports"),
+            EdgeKind::Inherits    => write!(f, "inherits"),
+            EdgeKind::Calls       => write!(f, "calls"),
+            EdgeKind::UsesType    => write!(f, "uses_type"),
             EdgeKind::ExternalDep => write!(f, "external_dep"),
-            EdgeKind::FieldType => write!(f, "field_type"),
+            EdgeKind::FieldType   => write!(f, "field_type"),
         }
     }
 }
@@ -76,6 +78,7 @@ pub struct GraphStats {
     pub edge_count: usize,
     pub module_count: usize,
     pub class_count: usize,
+    pub struct_count: usize,
     pub function_count: usize,
     pub method_count: usize,
     pub property_count: usize,
@@ -163,6 +166,7 @@ impl CodeGraph {
             edge_count: self.graph.edge_count(),
             module_count: 0,
             class_count: 0,
+            struct_count: 0,
             function_count: 0,
             method_count: 0,
             property_count: 0,
@@ -175,10 +179,11 @@ impl CodeGraph {
                 stats.external_count += 1;
             }
             match node.kind {
-                NodeKind::Module => stats.module_count += 1,
-                NodeKind::Class => stats.class_count += 1,
+                NodeKind::Module   => stats.module_count += 1,
+                NodeKind::Class    => stats.class_count += 1,
+                NodeKind::Struct   => stats.struct_count += 1,
                 NodeKind::Function => stats.function_count += 1,
-                NodeKind::Method => stats.method_count += 1,
+                NodeKind::Method   => stats.method_count += 1,
                 NodeKind::Property => stats.property_count += 1,
                 NodeKind::Constant => stats.constant_count += 1,
             }
@@ -222,9 +227,86 @@ impl CodeGraph {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SerializableGraph {
     pub stats: GraphStats,
     pub nodes: Vec<Node>,
     pub edges: Vec<Edge>,
+}
+
+// ── Unit tests ────────────────────────────────────────────────────────────────
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn make_node(id: &str, kind: NodeKind) -> Node {
+        Node {
+            id: id.to_string(),
+            name: id.to_string(),
+            kind,
+            file: "test.rs".to_string(),
+            line: 1,
+            is_external: false,
+            docstring: None,
+        }
+    }
+
+    #[test]
+    fn test_add_node_deduplication() {
+        let mut g = CodeGraph::new();
+        let idx1 = g.add_node(make_node("a", NodeKind::Function));
+        let idx2 = g.add_node(make_node("a", NodeKind::Function));
+        assert_eq!(idx1, idx2, "Same node inserted twice should return same index");
+        assert_eq!(g.graph.node_count(), 1);
+    }
+
+    #[test]
+    fn test_add_edge_deduplication() {
+        let mut g = CodeGraph::new();
+        g.add_node(make_node("a", NodeKind::Module));
+        g.add_node(make_node("b", NodeKind::Function));
+        g.add_edge("a", "b", EdgeKind::Contains);
+        g.add_edge("a", "b", EdgeKind::Contains); // duplicate
+        assert_eq!(g.graph.edge_count(), 1, "Duplicate edges should be deduplicated");
+    }
+
+    #[test]
+    fn test_different_edge_kinds_allowed() {
+        let mut g = CodeGraph::new();
+        g.add_node(make_node("a", NodeKind::Module));
+        g.add_node(make_node("b", NodeKind::Function));
+        g.add_edge("a", "b", EdgeKind::Contains);
+        g.add_edge("a", "b", EdgeKind::Calls);
+        assert_eq!(g.graph.edge_count(), 2);
+    }
+
+    #[test]
+    fn test_stats_counts() {
+        let mut g = CodeGraph::new();
+        g.add_node(make_node("m", NodeKind::Module));
+        g.add_node(make_node("c", NodeKind::Class));
+        g.add_node(make_node("s", NodeKind::Struct));
+        g.add_node(make_node("f", NodeKind::Function));
+        g.add_node(make_node("me", NodeKind::Method));
+        let stats = g.stats();
+        assert_eq!(stats.module_count, 1);
+        assert_eq!(stats.class_count, 1);
+        assert_eq!(stats.struct_count, 1);
+        assert_eq!(stats.function_count, 1);
+        assert_eq!(stats.method_count, 1);
+        assert_eq!(stats.node_count, 5);
+    }
+
+    #[test]
+    fn test_roundtrip_serialization() {
+        let mut g = CodeGraph::new();
+        g.add_node(make_node("mod::A", NodeKind::Class));
+        g.add_node(make_node("mod::B", NodeKind::Function));
+        g.add_edge("mod::A", "mod::B", EdgeKind::Calls);
+        let sg = g.to_serializable();
+        let g2 = CodeGraph::from_serializable(sg);
+        assert_eq!(g2.graph.node_count(), 2);
+        assert_eq!(g2.graph.edge_count(), 1);
+    }
 }

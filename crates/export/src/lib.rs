@@ -37,13 +37,10 @@ pub fn export_dot(graph: &CodeGraph, out: &Path) -> Result<()> {
         let src_id = safe_dot_id(&src.id);
         let tgt_id = safe_dot_id(&tgt.id);
         let edge_color = edge_color(kind);
-        let label = format!("{}", kind);
+        let label = kind.to_string();
         dot.push_str(&format!(
             "    {} -> {} [label=\"{}\", color=\"{}\"];\n",
-            src_id,
-            tgt_id,
-            label,
-            edge_color,
+            src_id, tgt_id, label, edge_color,
         ));
     }
 
@@ -65,22 +62,23 @@ fn escape_dot(s: &str) -> String {
     s.replace('"', "\\\"")
 }
 
-fn node_color(kind: &NodeKind) -> &'static str {
+pub fn node_color(kind: &NodeKind) -> &'static str {
     match kind {
-        NodeKind::Module => "#4A90D9",
-        NodeKind::Class => "#E74C3C",
+        NodeKind::Module   => "#4A90D9",
+        NodeKind::Class    => "#E74C3C",
+        NodeKind::Struct   => "#1ABC9C",
         NodeKind::Function => "#2ECC71",
-        NodeKind::Method => "#F39C12",
+        NodeKind::Method   => "#F39C12",
         NodeKind::Property => "#9B59B6",
         NodeKind::Constant => "#E67E22",
     }
 }
 
-fn lighten(color: &str) -> String {
-    // Return a light version (add alpha-ish effect in hex by lightening)
+pub fn lighten(color: &str) -> String {
     match color {
         "#4A90D9" => "#AED0F0".to_string(),
         "#E74C3C" => "#F7B7B2".to_string(),
+        "#1ABC9C" => "#A2DDD6".to_string(),
         "#2ECC71" => "#A3E9C5".to_string(),
         "#F39C12" => "#FAD7A0".to_string(),
         "#9B59B6" => "#D2B4DE".to_string(),
@@ -89,14 +87,14 @@ fn lighten(color: &str) -> String {
     }
 }
 
-fn edge_color(kind: &EdgeKind) -> &'static str {
+pub fn edge_color(kind: &EdgeKind) -> &'static str {
     match kind {
-        EdgeKind::Contains => "#BDC3C7",
-        EdgeKind::Imports => "#7F8C8D",
-        EdgeKind::Inherits => "#9B59B6",
-        EdgeKind::Calls => "#3498DB",
-        EdgeKind::UsesType => "#1ABC9C",
+        EdgeKind::Contains    => "#BDC3C7",
+        EdgeKind::Imports     => "#7F8C8D",
+        EdgeKind::Inherits    => "#9B59B6",
+        EdgeKind::Calls       => "#3498DB",
+        EdgeKind::UsesType    => "#1ABC9C",
         EdgeKind::ExternalDep => "#E67E22",
-        EdgeKind::FieldType => "#F39C12",
+        EdgeKind::FieldType   => "#F39C12",
     }
 }

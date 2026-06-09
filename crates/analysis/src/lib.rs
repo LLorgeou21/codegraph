@@ -1,17 +1,23 @@
 use anyhow::Result;
-use core::{CodeGraph, Edge, Node};
+use core::{CodeGraph, Edge, EdgeKind, Node};
 use parsers::Language;
 use petgraph::algo::kosaraju_scc;
 use petgraph::stable_graph::NodeIndex;
+use petgraph::visit::EdgeRef;
 use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet, VecDeque};
 use std::path::Path;
+
+// ── Metrics types ─────────────────────────────────────────────────────────────
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct NodeMetrics {
     pub in_degree: usize,
     pub out_degree: usize,
+    /// Normalised coupling score ∈ [0.0, 1.0]
     pub coupling_score: f32,
+    /// Depth of inheritance tree (0 = no parent, 1 = one level of inheritance…)
+    pub depth_of_inheritance: usize,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -19,6 +25,8 @@ pub struct GraphAnalysis {
     pub cycles: Vec<Vec<String>>,
     pub metrics: HashMap<String, NodeMetrics>,
     pub components: Vec<Vec<String>>,
+    /// IDs of nodes that have zero incoming **and** zero outgoing edges
+    pub orphan_nodes: Vec<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -29,32 +37,45 @@ pub struct GraphDiff {
     pub removed_edges: Vec<Edge>,
 }
 
+// ── Analysis ──────────────────────────────────────────────────────────────────
+
 pub fn analyze(graph: &CodeGraph) -> GraphAnalysis {
-    // Compute in/out degrees
     let total_nodes = graph.graph.node_count();
     let max_degree = if total_nodes > 1 { (total_nodes - 1) * 2 } else { 1 };
 
+    // ── Depth of Inheritance Tree ─────────────────────────────────────────────
+    let dit_map = compute_dit(graph);
+
+    // ── Per-node metrics ──────────────────────────────────────────────────────
     let mut metrics: HashMap<String, NodeMetrics> = HashMap::new();
+    let mut orphan_nodes: Vec<String> = Vec::new();
 
     for node in graph.nodes() {
         let idx = match graph.index_map.get(&node.id) {
             Some(&i) => i,
             None => continue,
         };
-        let in_d = graph.graph.neighbors_directed(idx, petgraph::Incoming).count();
+        let in_d  = graph.graph.neighbors_directed(idx, petgraph::Incoming).count();
         let out_d = graph.graph.neighbors_directed(idx, petgraph::Outgoing).count();
         let coupling = (in_d + out_d) as f32 / max_degree as f32;
+        let dit = *dit_map.get(&node.id).unwrap_or(&0);
+
+        if in_d == 0 && out_d == 0 {
+            orphan_nodes.push(node.id.clone());
+        }
+
         metrics.insert(
             node.id.clone(),
             NodeMetrics {
                 in_degree: in_d,
                 out_degree: out_d,
                 coupling_score: coupling,
+                depth_of_inheritance: dit,
             },
         );
     }
 
-    // Find cycles using Kosaraju SCC
+    // ── Cycles (Kosaraju SCC) ─────────────────────────────────────────────────
     let sccs = kosaraju_scc(&graph.graph);
     let mut cycles: Vec<Vec<String>> = Vec::new();
     for scc in &sccs {
@@ -68,19 +89,7 @@ pub fn analyze(graph: &CodeGraph) -> GraphAnalysis {
         }
     }
 
-    // Weakly connected components
-    let undirected: petgraph::graph::UnGraph<(), ()> = petgraph::graph::UnGraph::from_edges(
-        graph
-            .graph
-            .edge_indices()
-            .filter_map(|e| {
-                let (s, t) = graph.graph.edge_endpoints(e)?;
-                Some((s.index() as u32, t.index() as u32))
-            })
-            .collect::<Vec<_>>(),
-    );
-
-    // Use a simple BFS to find connected components on the stable graph
+    // ── Connected components (BFS sur graphe non-orienté) ────────────────────
     let mut visited: HashSet<NodeIndex> = HashSet::new();
     let mut components: Vec<Vec<String>> = Vec::new();
 
@@ -92,7 +101,6 @@ pub fn analyze(graph: &CodeGraph) -> GraphAnalysis {
         if visited.contains(&idx) {
             continue;
         }
-        // BFS
         let mut component = Vec::new();
         let mut queue = VecDeque::new();
         queue.push_back(idx);
@@ -102,7 +110,6 @@ pub fn analyze(graph: &CodeGraph) -> GraphAnalysis {
             if let Some(n) = graph.graph.node_weight(curr) {
                 component.push(n.id.clone());
             }
-            // Both directions for undirected component
             for nb in graph
                 .graph
                 .neighbors_directed(curr, petgraph::Outgoing)
@@ -117,14 +124,90 @@ pub fn analyze(graph: &CodeGraph) -> GraphAnalysis {
         components.push(component);
     }
 
-    let _ = undirected;
-
     GraphAnalysis {
         cycles,
         metrics,
         components,
+        orphan_nodes,
     }
 }
+
+// ── DIT computation ───────────────────────────────────────────────────────────
+
+/// Compute the depth of inheritance tree for every node.
+///
+/// DIT(node) = 0 if node has no Inherits-out edges,
+///           = 1 + max(DIT(parents)) otherwise.
+fn compute_dit(graph: &CodeGraph) -> HashMap<String, usize> {
+    let mut dit: HashMap<String, usize> = HashMap::new();
+    let node_ids: Vec<String> = graph.nodes().map(|n| n.id.clone()).collect();
+
+    for id in &node_ids {
+        if !dit.contains_key(id) {
+            let mut visited = HashSet::new();
+            compute_dit_rec(graph, id, &mut dit, &mut visited);
+        }
+    }
+
+    dit
+}
+
+fn compute_dit_rec(
+    graph: &CodeGraph,
+    node_id: &str,
+    dit: &mut HashMap<String, usize>,
+    visited: &mut HashSet<String>,
+) -> usize {
+    if let Some(&cached) = dit.get(node_id) {
+        return cached;
+    }
+    // Cycle guard
+    if !visited.insert(node_id.to_string()) {
+        return 0;
+    }
+
+    let idx = match graph.index_map.get(node_id) {
+        Some(&i) => i,
+        None => {
+            dit.insert(node_id.to_string(), 0);
+            return 0;
+        }
+    };
+
+    // Traverse Inherits edges going outward (A inherits B → B is the parent)
+    let max_parent: usize = graph
+        .graph
+        .edges_directed(idx, petgraph::Outgoing)
+        .filter(|e| *e.weight() == EdgeKind::Inherits)
+        .map(|e| {
+            if let Some(parent) = graph.graph.node_weight(e.target()) {
+                compute_dit_rec(graph, &parent.id, dit, visited)
+            } else {
+                0
+            }
+        })
+        .max()
+        .unwrap_or(0);
+
+    let depth = if max_parent == 0 &&
+        graph
+            .graph
+            .edges_directed(idx, petgraph::Outgoing)
+            .filter(|e| *e.weight() == EdgeKind::Inherits)
+            .count()
+            == 0
+    {
+        0 // no parents → DIT = 0
+    } else {
+        max_parent + 1
+    };
+
+    dit.insert(node_id.to_string(), depth);
+    visited.remove(node_id);
+    depth
+}
+
+// ── Diff ──────────────────────────────────────────────────────────────────────
 
 pub fn diff(old: &CodeGraph, new: &CodeGraph) -> GraphDiff {
     let old_ids: HashSet<&str> = old.nodes().map(|n| n.id.as_str()).collect();
@@ -142,19 +225,20 @@ pub fn diff(old: &CodeGraph, new: &CodeGraph) -> GraphDiff {
         .cloned()
         .collect();
 
-    // Collect edges as (source_id, target_id, kind) sets
     let old_edges: HashSet<(String, String, String)> = old
         .edges()
-        .map(|(s, t, k)| (s.id.clone(), t.id.clone(), format!("{:?}", k)))
+        .map(|(s, t, k)| (s.id.clone(), t.id.clone(), k.to_string()))
         .collect();
     let new_edges: HashSet<(String, String, String)> = new
         .edges()
-        .map(|(s, t, k)| (s.id.clone(), t.id.clone(), format!("{:?}", k)))
+        .map(|(s, t, k)| (s.id.clone(), t.id.clone(), k.to_string()))
         .collect();
 
     let added_edges: Vec<Edge> = new
         .edges()
-        .filter(|(s, t, k)| !old_edges.contains(&(s.id.clone(), t.id.clone(), format!("{:?}", k))))
+        .filter(|(s, t, k)| {
+            !old_edges.contains(&(s.id.clone(), t.id.clone(), k.to_string()))
+        })
         .map(|(s, t, k)| Edge {
             source: s.id.clone(),
             target: t.id.clone(),
@@ -164,7 +248,9 @@ pub fn diff(old: &CodeGraph, new: &CodeGraph) -> GraphDiff {
 
     let removed_edges: Vec<Edge> = old
         .edges()
-        .filter(|(s, t, k)| !new_edges.contains(&(s.id.clone(), t.id.clone(), format!("{:?}", k))))
+        .filter(|(s, t, k)| {
+            !new_edges.contains(&(s.id.clone(), t.id.clone(), k.to_string()))
+        })
         .map(|(s, t, k)| Edge {
             source: s.id.clone(),
             target: t.id.clone(),
@@ -180,6 +266,8 @@ pub fn diff(old: &CodeGraph, new: &CodeGraph) -> GraphDiff {
     }
 }
 
+// ── Focus ─────────────────────────────────────────────────────────────────────
+
 pub fn focus(graph: &CodeGraph, node_id: &str, depth: usize) -> CodeGraph {
     let mut result = CodeGraph::new();
 
@@ -188,7 +276,6 @@ pub fn focus(graph: &CodeGraph, node_id: &str, depth: usize) -> CodeGraph {
         None => return result,
     };
 
-    // BFS up to `depth` levels
     let mut visited: HashSet<NodeIndex> = HashSet::new();
     let mut queue: VecDeque<(NodeIndex, usize)> = VecDeque::new();
     queue.push_back((start_idx, 0));
@@ -212,7 +299,6 @@ pub fn focus(graph: &CodeGraph, node_id: &str, depth: usize) -> CodeGraph {
         }
     }
 
-    // Add edges between collected nodes
     for e in graph.graph.edge_indices() {
         if let Some((s, t)) = graph.graph.edge_endpoints(e) {
             if visited.contains(&s) && visited.contains(&t) {
@@ -230,6 +316,8 @@ pub fn focus(graph: &CodeGraph, node_id: &str, depth: usize) -> CodeGraph {
     result
 }
 
+// ── Git diff analysis ─────────────────────────────────────────────────────────
+
 pub fn git_diff_analyze(
     root: &Path,
     git_ref: &str,
@@ -237,7 +325,6 @@ pub fn git_diff_analyze(
 ) -> Result<GraphDiff> {
     use std::process::Command;
 
-    // Get list of tracked files at this ref
     let output = Command::new("git")
         .args(["ls-tree", "-r", "--name-only", git_ref])
         .current_dir(root)
@@ -257,17 +344,15 @@ pub fn git_diff_analyze(
 
     for file_path in file_list.lines() {
         let lang = match file_path.split('.').last() {
-            Some("py") if languages.contains(&Language::Python) => Language::Python,
-            Some("rs") if languages.contains(&Language::Rust) => Language::Rust,
+            Some("py")  if languages.contains(&Language::Python)     => Language::Python,
+            Some("rs")  if languages.contains(&Language::Rust)       => Language::Rust,
             Some("cpp") | Some("cc") | Some("cxx") | Some("hpp") | Some("h")
-                if languages.contains(&Language::Cpp) =>
-            {
-                Language::Cpp
-            }
+                if languages.contains(&Language::Cpp) => Language::Cpp,
+            Some("ts") | Some("tsx") if languages.contains(&Language::TypeScript) => Language::TypeScript,
+            Some("js") | Some("jsx") if languages.contains(&Language::JavaScript) => Language::JavaScript,
             _ => continue,
         };
 
-        // Get file content at git ref
         let content_output = Command::new("git")
             .args(["show", &format!("{}:{}", git_ref, file_path)])
             .current_dir(root)
@@ -278,13 +363,15 @@ pub fn git_diff_analyze(
             continue;
         }
 
-        let source = String::from_utf8_lossy(&content_output.stdout).to_string();
+        let source  = String::from_utf8_lossy(&content_output.stdout).to_string();
         let rel_path = file_path.replace('\\', "/");
 
         let ctx = match lang {
-            Language::Python => parsers::python::parse_file(&source, &rel_path, &mut old_graph),
-            Language::Rust => parsers::rust_lang::parse_file(&source, &rel_path, &mut old_graph),
-            Language::Cpp => parsers::cpp::parse_file(&source, &rel_path, &mut old_graph),
+            Language::Python     => parsers::python::parse_file(&source, &rel_path, &mut old_graph),
+            Language::Rust       => parsers::rust_lang::parse_file(&source, &rel_path, &mut old_graph),
+            Language::Cpp        => parsers::cpp::parse_file(&source, &rel_path, &mut old_graph),
+            Language::TypeScript => parsers::typescript::parse_file(&source, &rel_path, &mut old_graph, parsers::typescript::JsVariant::TypeScript),
+            Language::JavaScript => parsers::typescript::parse_file(&source, &rel_path, &mut old_graph, parsers::typescript::JsVariant::JavaScript),
         };
 
         if let Ok(c) = ctx {
@@ -294,8 +381,125 @@ pub fn git_diff_analyze(
 
     parsers::Resolver::resolve_all(contexts, &mut old_graph);
 
-    // Build current graph
     let new_graph = parsers::analyze(root, languages, false)?;
 
     Ok(diff(&old_graph, &new_graph))
+}
+
+// ── Tests ─────────────────────────────────────────────────────────────────────
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use core::{CodeGraph, EdgeKind, Node, NodeKind};
+
+    fn node(id: &str, kind: NodeKind) -> Node {
+        Node {
+            id: id.to_string(),
+            name: id.to_string(),
+            kind,
+            file: "test.rs".to_string(),
+            line: 1,
+            is_external: false,
+            docstring: None,
+        }
+    }
+
+    fn make_graph_with_cycle() -> CodeGraph {
+        let mut g = CodeGraph::new();
+        g.add_node(node("A", NodeKind::Class));
+        g.add_node(node("B", NodeKind::Class));
+        g.add_node(node("C", NodeKind::Function));
+        // A → B → A (cycle), C is orphan
+        g.add_edge("A", "B", EdgeKind::Calls);
+        g.add_edge("B", "A", EdgeKind::Calls);
+        g
+    }
+
+    #[test]
+    fn test_cycle_detection() {
+        let g = make_graph_with_cycle();
+        let a = analyze(&g);
+        assert!(!a.cycles.is_empty(), "Should detect at least one cycle");
+        let all_cycle_nodes: HashSet<&str> = a.cycles.iter().flatten().map(|s| s.as_str()).collect();
+        assert!(all_cycle_nodes.contains("A"));
+        assert!(all_cycle_nodes.contains("B"));
+    }
+
+    #[test]
+    fn test_orphan_detection() {
+        let g = make_graph_with_cycle();
+        let a = analyze(&g);
+        assert!(a.orphan_nodes.contains(&"C".to_string()), "C should be an orphan");
+        assert!(!a.orphan_nodes.contains(&"A".to_string()));
+    }
+
+    #[test]
+    fn test_dit_no_inheritance() {
+        let mut g = CodeGraph::new();
+        g.add_node(node("Base", NodeKind::Class));
+        let a = analyze(&g);
+        assert_eq!(a.metrics["Base"].depth_of_inheritance, 0);
+    }
+
+    #[test]
+    fn test_dit_one_level() {
+        let mut g = CodeGraph::new();
+        g.add_node(node("Base", NodeKind::Class));
+        g.add_node(node("Child", NodeKind::Class));
+        g.add_edge("Child", "Base", EdgeKind::Inherits);
+        let a = analyze(&g);
+        assert_eq!(a.metrics["Child"].depth_of_inheritance, 1);
+        assert_eq!(a.metrics["Base"].depth_of_inheritance, 0);
+    }
+
+    #[test]
+    fn test_dit_two_levels() {
+        let mut g = CodeGraph::new();
+        g.add_node(node("Base", NodeKind::Class));
+        g.add_node(node("Mid", NodeKind::Class));
+        g.add_node(node("Leaf", NodeKind::Class));
+        g.add_edge("Mid", "Base", EdgeKind::Inherits);
+        g.add_edge("Leaf", "Mid", EdgeKind::Inherits);
+        let a = analyze(&g);
+        assert_eq!(a.metrics["Leaf"].depth_of_inheritance, 2);
+        assert_eq!(a.metrics["Mid"].depth_of_inheritance, 1);
+    }
+
+    #[test]
+    fn test_components() {
+        let mut g = CodeGraph::new();
+        g.add_node(node("X", NodeKind::Function));
+        g.add_node(node("Y", NodeKind::Function));
+        g.add_node(node("Z", NodeKind::Function));
+        g.add_edge("X", "Y", EdgeKind::Calls);
+        // Z is disconnected
+        let a = analyze(&g);
+        assert_eq!(a.components.len(), 2);
+    }
+
+    #[test]
+    fn test_coupling_score_range() {
+        let g = make_graph_with_cycle();
+        let a = analyze(&g);
+        for (_, m) in &a.metrics {
+            assert!(m.coupling_score >= 0.0);
+            assert!(m.coupling_score <= 1.0);
+        }
+    }
+
+    #[test]
+    fn test_diff_added_removed() {
+        let mut old = CodeGraph::new();
+        old.add_node(node("common", NodeKind::Function));
+        old.add_node(node("removed", NodeKind::Function));
+
+        let mut new_g = CodeGraph::new();
+        new_g.add_node(node("common", NodeKind::Function));
+        new_g.add_node(node("added", NodeKind::Function));
+
+        let d = diff(&old, &new_g);
+        assert!(d.added_nodes.iter().any(|n| n.id == "added"));
+        assert!(d.removed_nodes.iter().any(|n| n.id == "removed"));
+    }
 }

@@ -210,7 +210,7 @@ fn parse_struct(
     graph.add_node(Node {
         id: struct_id.clone(),
         name: name.clone(),
-        kind: NodeKind::Class,
+        kind: NodeKind::Struct,
         file: rel_path.to_string(),
         line,
         is_external: false,
@@ -229,7 +229,7 @@ fn parse_enum(
     module_id: &str,
     rel_path: &str,
     graph: &mut CodeGraph,
-    ctx: &mut ParseContext,
+    _ctx: &mut ParseContext,
 ) {
     let line = node.start_position().row + 1;
     let mut name = String::new();
@@ -251,14 +251,13 @@ fn parse_enum(
     graph.add_node(Node {
         id: enum_id.clone(),
         name: name.clone(),
-        kind: NodeKind::Class,
+        kind: NodeKind::Struct,   // enums are Struct-kind (not Class)
         file: rel_path.to_string(),
         line,
         is_external: false,
         docstring,
     });
     graph.add_edge(module_id, &enum_id, EdgeKind::Contains);
-    let _ = ctx;
 }
 
 fn parse_trait(
@@ -294,7 +293,7 @@ fn parse_trait(
     graph.add_node(Node {
         id: trait_id.clone(),
         name: name.clone(),
-        kind: NodeKind::Class,
+        kind: NodeKind::Class,   // traits are Class-kind (behavioural contract like class)
         file: rel_path.to_string(),
         line,
         is_external: false,
@@ -591,5 +590,5 @@ fn parse_use(source: &str, node: TsNode, module_id: &str, ctx: &mut ParseContext
         ctx.imports.insert(path.clone(), path);
     }
 
-    let _ = module_id;
+    let _module_id = module_id; // kept for future use (pub use resolution)
 }

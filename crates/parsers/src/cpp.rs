@@ -195,7 +195,7 @@ fn parse_struct(
     graph.add_node(Node {
         id: struct_id.clone(),
         name: struct_name.clone(),
-        kind: NodeKind::Class,
+        kind: NodeKind::Struct,
         file: rel_path.to_string(),
         line,
         is_external: false,
@@ -318,7 +318,7 @@ fn parse_declaration(
     module_id: &str,
     rel_path: &str,
     graph: &mut CodeGraph,
-    ctx: &mut ParseContext,
+    _ctx: &mut ParseContext,
     parent_class: Option<&str>,
 ) {
     let line = node.start_position().row + 1;
@@ -365,7 +365,6 @@ fn parse_declaration(
         let parent_id = parent_class.unwrap_or(module_id);
         graph.add_edge(parent_id, &func_id, EdgeKind::Contains);
     }
-    let _ = ctx;
 }
 
 fn parse_compound_statement(

@@ -2,10 +2,10 @@
 
 > Multi-language static analyzer that builds and visualizes dependency graphs across Python, Rust, C++, TypeScript and JavaScript codebases.
 
-<p align="center" style="display:flex;justify-content:space-between;">
-  <img src="docs/codegraph_graph.png"     width="44%" alt="Graph view"/>
-  &nbsp;
-  <img src="docs/codegraph_structure.png" width="49%" alt="Structural view"/>
+<p align="center">
+  <img src="docs/codegraph_graph.png"     height="340" alt="Graph view"/>
+  &nbsp;&nbsp;
+  <img src="docs/codegraph_structure.png" height="340" alt="Structural view"/>
 </p>
 
 ---

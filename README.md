@@ -2,7 +2,7 @@
 
 > Multi-language static analyzer that builds and visualizes dependency graphs across Python, Rust and C++ codebases.
 
-![Graph of this codebase](docs/codegraph_self.png)
+![Graph of this codebase](docs/codegraph_graph.png)
 
 ---
 

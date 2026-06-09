@@ -1,0 +1,3567 @@
+{
+  "stats": {
+    "node_count": 190,
+    "edge_count": 368,
+    "module_count": 11,
+    "class_count": 74,
+    "function_count": 78,
+    "method_count": 27,
+    "property_count": 0,
+    "constant_count": 0,
+    "external_count": 67
+  },
+  "nodes": [
+    {
+      "id": "crates::analysis",
+      "name": "analysis",
+      "kind": "module",
+      "file": "crates/analysis/src/lib.rs",
+      "line": 1,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::analysis::NodeMetrics",
+      "name": "NodeMetrics",
+      "kind": "class",
+      "file": "crates/analysis/src/lib.rs",
+      "line": 11,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::analysis::GraphAnalysis",
+      "name": "GraphAnalysis",
+      "kind": "class",
+      "file": "crates/analysis/src/lib.rs",
+      "line": 18,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::analysis::GraphDiff",
+      "name": "GraphDiff",
+      "kind": "class",
+      "file": "crates/analysis/src/lib.rs",
+      "line": 25,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::analysis::analyze",
+      "name": "analyze",
+      "kind": "function",
+      "file": "crates/analysis/src/lib.rs",
+      "line": 32,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::analysis::diff",
+      "name": "diff",
+      "kind": "function",
+      "file": "crates/analysis/src/lib.rs",
+      "line": 129,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::analysis::focus",
+      "name": "focus",
+      "kind": "function",
+      "file": "crates/analysis/src/lib.rs",
+      "line": 183,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::analysis::git_diff_analyze",
+      "name": "git_diff_analyze",
+      "kind": "function",
+      "file": "crates/analysis/src/lib.rs",
+      "line": 233,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app",
+      "name": "app",
+      "kind": "module",
+      "file": "crates/app/src/main.rs",
+      "line": 1,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::main",
+      "name": "main",
+      "kind": "function",
+      "file": "crates/app/src/main.rs",
+      "line": 10,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::WorkerMsg",
+      "name": "WorkerMsg",
+      "kind": "class",
+      "file": "crates/app/src/main.rs",
+      "line": 26,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::AnalysisResult",
+      "name": "AnalysisResult",
+      "kind": "class",
+      "file": "crates/app/src/main.rs",
+      "line": 31,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::AppStatus",
+      "name": "AppStatus",
+      "kind": "class",
+      "file": "crates/app/src/main.rs",
+      "line": 43,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::AppState",
+      "name": "AppState",
+      "kind": "class",
+      "file": "crates/app/src/main.rs",
+      "line": 49,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::AppState::default",
+      "name": "default",
+      "kind": "method",
+      "file": "crates/app/src/main.rs",
+      "line": 76,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::AppState::selected_languages",
+      "name": "selected_languages",
+      "kind": "method",
+      "file": "crates/app/src/main.rs",
+      "line": 99,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::AppState::start_analysis",
+      "name": "start_analysis",
+      "kind": "method",
+      "file": "crates/app/src/main.rs",
+      "line": 113,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::AppState::start_git_diff",
+      "name": "start_git_diff",
+      "kind": "method",
+      "file": "crates/app/src/main.rs",
+      "line": 155,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::AppState::setup_watch",
+      "name": "setup_watch",
+      "kind": "method",
+      "file": "crates/app/src/main.rs",
+      "line": 184,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::AppState::stop_watch",
+      "name": "stop_watch",
+      "kind": "method",
+      "file": "crates/app/src/main.rs",
+      "line": 213,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::AppState::poll_results",
+      "name": "poll_results",
+      "kind": "method",
+      "file": "crates/app/src/main.rs",
+      "line": 219,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::run_analysis",
+      "name": "run_analysis",
+      "kind": "function",
+      "file": "crates/app/src/main.rs",
+      "line": 252,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::run_git_diff",
+      "name": "run_git_diff",
+      "kind": "function",
+      "file": "crates/app/src/main.rs",
+      "line": 290,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::open_file",
+      "name": "open_file",
+      "kind": "function",
+      "file": "crates/app/src/main.rs",
+      "line": 319,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::app::AppState::update",
+      "name": "update",
+      "kind": "method",
+      "file": "crates/app/src/main.rs",
+      "line": 343,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core",
+      "name": "core",
+      "kind": "module",
+      "file": "crates/core/src/lib.rs",
+      "line": 1,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::NodeKind",
+      "name": "NodeKind",
+      "kind": "class",
+      "file": "crates/core/src/lib.rs",
+      "line": 7,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::NodeKind::fmt",
+      "name": "fmt",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 17,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::EdgeKind",
+      "name": "EdgeKind",
+      "kind": "class",
+      "file": "crates/core/src/lib.rs",
+      "line": 31,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::EdgeKind::fmt",
+      "name": "fmt",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 42,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::Node",
+      "name": "Node",
+      "kind": "class",
+      "file": "crates/core/src/lib.rs",
+      "line": 56,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::Edge",
+      "name": "Edge",
+      "kind": "class",
+      "file": "crates/core/src/lib.rs",
+      "line": 67,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::GraphStats",
+      "name": "GraphStats",
+      "kind": "class",
+      "file": "crates/core/src/lib.rs",
+      "line": 74,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::CodeGraph",
+      "name": "CodeGraph",
+      "kind": "class",
+      "file": "crates/core/src/lib.rs",
+      "line": 87,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::CodeGraph::default",
+      "name": "default",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 94,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::CodeGraph::new",
+      "name": "new",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 100,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::CodeGraph::add_node",
+      "name": "add_node",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 107,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::CodeGraph::add_edge",
+      "name": "add_edge",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 117,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::CodeGraph::has_node",
+      "name": "has_node",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 136,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::CodeGraph::get_node",
+      "name": "get_node",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 140,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::CodeGraph::nodes",
+      "name": "nodes",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 146,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::CodeGraph::edges",
+      "name": "edges",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 150,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::CodeGraph::stats",
+      "name": "stats",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 160,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::CodeGraph::to_serializable",
+      "name": "to_serializable",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 189,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::CodeGraph::from_serializable",
+      "name": "from_serializable",
+      "kind": "method",
+      "file": "crates/core/src/lib.rs",
+      "line": 213,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::core::SerializableGraph",
+      "name": "SerializableGraph",
+      "kind": "class",
+      "file": "crates/core/src/lib.rs",
+      "line": 226,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::export::html",
+      "name": "html",
+      "kind": "module",
+      "file": "crates/export/src/html.rs",
+      "line": 1,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::export::html::export_html",
+      "name": "export_html",
+      "kind": "function",
+      "file": "crates/export/src/html.rs",
+      "line": 1096,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::export",
+      "name": "export",
+      "kind": "module",
+      "file": "crates/export/src/lib.rs",
+      "line": 1,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::export::export_json",
+      "name": "export_json",
+      "kind": "function",
+      "file": "crates/export/src/lib.rs",
+      "line": 7,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::export::export_dot",
+      "name": "export_dot",
+      "kind": "function",
+      "file": "crates/export/src/lib.rs",
+      "line": 14,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::export::safe_dot_id",
+      "name": "safe_dot_id",
+      "kind": "function",
+      "file": "crates/export/src/lib.rs",
+      "line": 55,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::export::escape_dot",
+      "name": "escape_dot",
+      "kind": "function",
+      "file": "crates/export/src/lib.rs",
+      "line": 64,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::export::node_color",
+      "name": "node_color",
+      "kind": "function",
+      "file": "crates/export/src/lib.rs",
+      "line": 68,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::export::lighten",
+      "name": "lighten",
+      "kind": "function",
+      "file": "crates/export/src/lib.rs",
+      "line": 79,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::export::edge_color",
+      "name": "edge_color",
+      "kind": "function",
+      "file": "crates/export/src/lib.rs",
+      "line": 92,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp",
+      "name": "cpp",
+      "kind": "module",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 1,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp::parse_file",
+      "name": "parse_file",
+      "kind": "function",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 6,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp::path_to_module_id",
+      "name": "path_to_module_id",
+      "kind": "function",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 40,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp::node_text",
+      "name": "node_text",
+      "kind": "function",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 44,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp::process_translation_unit",
+      "name": "process_translation_unit",
+      "kind": "function",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 48,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp::parse_class",
+      "name": "parse_class",
+      "kind": "function",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 108,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp::parse_struct",
+      "name": "parse_struct",
+      "kind": "function",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 166,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp::parse_class_body",
+      "name": "parse_class_body",
+      "kind": "function",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 211,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp::parse_function",
+      "name": "parse_function",
+      "kind": "function",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 243,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp::parse_declaration",
+      "name": "parse_declaration",
+      "kind": "function",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 315,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp::parse_compound_statement",
+      "name": "parse_compound_statement",
+      "kind": "function",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 371,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp::parse_call_expression",
+      "name": "parse_call_expression",
+      "kind": "function",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 401,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::cpp::parse_include",
+      "name": "parse_include",
+      "kind": "function",
+      "file": "crates/parsers/src/cpp.rs",
+      "line": 459,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers",
+      "name": "parsers",
+      "kind": "module",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 1,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::Language",
+      "name": "Language",
+      "kind": "class",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 12,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::PendingCall",
+      "name": "PendingCall",
+      "kind": "class",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 19,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::ParseContext",
+      "name": "ParseContext",
+      "kind": "class",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 27,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::infer_external_kind",
+      "name": "infer_external_kind",
+      "kind": "function",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 44,
+      "is_external": false,
+      "docstring": "Infer the NodeKind for an external symbol from its short name.\nA node is Module only when it corresponds to an actual source file —\nexternal symbols should be Class / Constant / Function, never Module."
+    },
+    {
+      "id": "crates::parsers::Resolver",
+      "name": "Resolver",
+      "kind": "class",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 76,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::Resolver::build",
+      "name": "build",
+      "kind": "method",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 81,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::Resolver::resolve_name",
+      "name": "resolve_name",
+      "kind": "method",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 102,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::Resolver::resolve_all",
+      "name": "resolve_all",
+      "kind": "method",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 170,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::Cache",
+      "name": "Cache",
+      "kind": "class",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 299,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::Cache::load",
+      "name": "load",
+      "kind": "method",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 305,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::Cache::save",
+      "name": "save",
+      "kind": "method",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 311,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::Cache::is_unchanged",
+      "name": "is_unchanged",
+      "kind": "method",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 318,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::collect_files",
+      "name": "collect_files",
+      "kind": "function",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 330,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::collect_files_recursive",
+      "name": "collect_files_recursive",
+      "kind": "function",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 336,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::analyze",
+      "name": "analyze",
+      "kind": "function",
+      "file": "crates/parsers/src/lib.rs",
+      "line": 372,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python",
+      "name": "python",
+      "kind": "module",
+      "file": "crates/parsers/src/python.rs",
+      "line": 1,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_file",
+      "name": "parse_file",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 6,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::path_to_module_id",
+      "name": "path_to_module_id",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 41,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::node_text",
+      "name": "node_text",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 49,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::extract_module_docstring",
+      "name": "extract_module_docstring",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 53,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::clean_docstring",
+      "name": "clean_docstring",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 65,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::get_decorators",
+      "name": "get_decorators",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 76,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::get_first_string_child",
+      "name": "get_first_string_child",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 88,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::process_module",
+      "name": "process_module",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 103,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_import",
+      "name": "parse_import",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 144,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_import_from",
+      "name": "parse_import_from",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 174,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_class",
+      "name": "parse_class",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 248,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_dataclass_field",
+      "name": "parse_dataclass_field",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 337,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_dataclass_annotated_field",
+      "name": "parse_dataclass_annotated_field",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 357,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_function",
+      "name": "parse_function",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 387,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_params",
+      "name": "parse_params",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 473,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_function_body",
+      "name": "parse_function_body",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 504,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_call",
+      "name": "parse_call",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 562,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_assignment_in_func",
+      "name": "parse_assignment_in_func",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 612,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_annotated_assignment",
+      "name": "parse_annotated_assignment",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 688,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::python::parse_constant",
+      "name": "parse_constant",
+      "kind": "function",
+      "file": "crates/parsers/src/python.rs",
+      "line": 747,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang",
+      "name": "rust_lang",
+      "kind": "module",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 1,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::parse_file",
+      "name": "parse_file",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 6,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::path_to_module_id",
+      "name": "path_to_module_id",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 40,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::node_text",
+      "name": "node_text",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 56,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::get_doc_comment",
+      "name": "get_doc_comment",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 60,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::process_items",
+      "name": "process_items",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 96,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::parse_struct",
+      "name": "parse_struct",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 154,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::parse_enum",
+      "name": "parse_enum",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 226,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::parse_trait",
+      "name": "parse_trait",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 264,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::parse_impl",
+      "name": "parse_impl",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 310,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::parse_function",
+      "name": "parse_function",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 369,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::parse_block",
+      "name": "parse_block",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 439,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::is_valid_callee",
+      "name": "is_valid_callee",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 464,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::last_component",
+      "name": "last_component",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 468,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::parse_call_expr",
+      "name": "parse_call_expr",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 472,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::parse_method_call_expr",
+      "name": "parse_method_call_expr",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 516,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "crates::parsers::rust_lang::parse_use",
+      "name": "parse_use",
+      "kind": "function",
+      "file": "crates/parsers/src/rust_lang.rs",
+      "line": 549,
+      "is_external": false,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Vec<Vec<String>>",
+      "name": "Vec<Vec<String>>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.HashMap<String, NodeMetrics>",
+      "name": "HashMap<String, NodeMetrics>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Vec<Node>",
+      "name": "Vec<Node>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Vec<Edge>",
+      "name": "Vec<Edge>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Result<GraphDiff>",
+      "name": "Result<GraphDiff>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.kosaraju_scc",
+      "name": "kosaraju_scc",
+      "kind": "function",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.from_edges",
+      "name": "from_edges",
+      "kind": "function",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Err",
+      "name": "Err",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.from_utf8_lossy",
+      "name": "from_utf8_lossy",
+      "kind": "function",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Ok",
+      "name": "Ok",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Deserialize",
+      "name": "Deserialize",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Serialize",
+      "name": "Serialize",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Result",
+      "name": "Result",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.HashMap",
+      "name": "HashMap",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.VecDeque",
+      "name": "VecDeque",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Path",
+      "name": "Path",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.HashSet",
+      "name": "HashSet",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.NodeIndex",
+      "name": "NodeIndex",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Default",
+      "name": "Default",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.App",
+      "name": "App",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Result<()>",
+      "name": "Result<()>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Option<PathBuf>",
+      "name": "Option<PathBuf>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.String",
+      "name": "String",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Option<Sender<WorkerMsg>>",
+      "name": "Option<Sender<WorkerMsg>>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Option<Receiver<WorkerMsg>>",
+      "name": "Option<Receiver<WorkerMsg>>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Option<AnalysisResult>",
+      "name": "Option<AnalysisResult>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Option<String>",
+      "name": "Option<String>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Watcher + Send>>",
+      "name": "Watcher + Send>>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Option<Sender<()>>",
+      "name": "Option<Sender<()>>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Option<Receiver<()>>",
+      "name": "Option<Receiver<()>>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Self",
+      "name": "Self",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Vec<Language>",
+      "name": "Vec<Language>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Result<AnalysisResult>",
+      "name": "Result<AnalysisResult>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.run_native",
+      "name": "run_native",
+      "kind": "function",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.from",
+      "name": "from",
+      "kind": "function",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.spawn",
+      "name": "spawn",
+      "kind": "function",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.recommended_watcher",
+      "name": "recommended_watcher",
+      "kind": "function",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.now",
+      "name": "now",
+      "kind": "function",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.RecursiveMode",
+      "name": "RecursiveMode",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Event",
+      "name": "Event",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Watcher",
+      "name": "Watcher",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.egui",
+      "name": "egui",
+      "kind": "module",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Receiver",
+      "name": "Receiver",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Instant",
+      "name": "Instant",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.PathBuf",
+      "name": "PathBuf",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.self",
+      "name": "self",
+      "kind": "module",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Sender",
+      "name": "Sender",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Display",
+      "name": "Display",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.StableDiGraph<Node, EdgeKind>",
+      "name": "StableDiGraph<Node, EdgeKind>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.HashMap<String, NodeIndex>",
+      "name": "HashMap<String, NodeIndex>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Option<&Node>",
+      "name": "Option<&Node>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.StableDiGraph",
+      "name": "StableDiGraph",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Result<ParseContext>",
+      "name": "Result<ParseContext>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Node as TsNode",
+      "name": "Node as TsNode",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Parser",
+      "name": "Parser",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.HashMap<String, String>",
+      "name": "HashMap<String, String>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Vec<PendingCall>",
+      "name": "Vec<PendingCall>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Vec<(String, String)>",
+      "name": "Vec<(String, String)>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.HashMap<String, HashMap<String, String>>",
+      "name": "HashMap<String, HashMap<String, String>>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.HashMap<String, Vec<String>>",
+      "name": "HashMap<String, Vec<String>>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Option<Self>",
+      "name": "Option<Self>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Vec<(PathBuf, Language)>",
+      "name": "Vec<(PathBuf, Language)>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Result<CodeGraph>",
+      "name": "Result<CodeGraph>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Some",
+      "name": "Some",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.write",
+      "name": "write",
+      "kind": "function",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.read_dir",
+      "name": "read_dir",
+      "kind": "function",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    },
+    {
+      "id": "__ext__.Vec<String>",
+      "name": "Vec<String>",
+      "kind": "class",
+      "file": "",
+      "line": 0,
+      "is_external": true,
+      "docstring": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "crates::analysis",
+      "target": "crates::analysis::NodeMetrics",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "crates::analysis::GraphAnalysis",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "crates::analysis::GraphDiff",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "crates::analysis::analyze",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "crates::analysis::diff",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "crates::analysis::focus",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "crates::analysis::git_diff_analyze",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app",
+      "target": "crates::app::main",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app",
+      "target": "crates::app::WorkerMsg",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app",
+      "target": "crates::app::AnalysisResult",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app",
+      "target": "crates::app::AppStatus",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app",
+      "target": "crates::app::AppState",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "crates::app::AppState::default",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "crates::app::AppState::selected_languages",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "crates::app::AppState::start_analysis",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "crates::app::AppState::start_git_diff",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "crates::app::AppState::setup_watch",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "crates::app::AppState::stop_watch",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "crates::app::AppState::poll_results",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app",
+      "target": "crates::app::run_analysis",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app",
+      "target": "crates::app::run_git_diff",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app",
+      "target": "crates::app::open_file",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "crates::app::AppState::update",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core",
+      "target": "crates::core::NodeKind",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::NodeKind",
+      "target": "crates::core::NodeKind::fmt",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core",
+      "target": "crates::core::EdgeKind",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::EdgeKind",
+      "target": "crates::core::EdgeKind::fmt",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core",
+      "target": "crates::core::Node",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core",
+      "target": "crates::core::Edge",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core",
+      "target": "crates::core::GraphStats",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core",
+      "target": "crates::core::CodeGraph",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "crates::core::CodeGraph::default",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "crates::core::CodeGraph::add_node",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "crates::core::CodeGraph::add_edge",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "crates::core::CodeGraph::has_node",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "crates::core::CodeGraph::get_node",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "crates::core::CodeGraph::nodes",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "crates::core::CodeGraph::edges",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "crates::core::CodeGraph::stats",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "crates::core::CodeGraph::to_serializable",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "crates::core::CodeGraph::from_serializable",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::core",
+      "target": "crates::core::SerializableGraph",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::export::html",
+      "target": "crates::export::html::export_html",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::export",
+      "target": "crates::export::export_json",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::export",
+      "target": "crates::export::export_dot",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::export",
+      "target": "crates::export::safe_dot_id",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::export",
+      "target": "crates::export::escape_dot",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::export",
+      "target": "crates::export::node_color",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::export",
+      "target": "crates::export::lighten",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::export",
+      "target": "crates::export::edge_color",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::cpp::parse_file",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::cpp::path_to_module_id",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::cpp::node_text",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::cpp::process_translation_unit",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::cpp::parse_class",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::cpp::parse_struct",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::cpp::parse_class_body",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::cpp::parse_function",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::cpp::parse_declaration",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::cpp::parse_compound_statement",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::cpp::parse_call_expression",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::cpp::parse_include",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::parsers::Language",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::parsers::PendingCall",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::parsers::ParseContext",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::parsers::infer_external_kind",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::parsers::Resolver",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::Resolver",
+      "target": "crates::parsers::Resolver::build",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::Resolver",
+      "target": "crates::parsers::Resolver::resolve_name",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::Resolver",
+      "target": "crates::parsers::Resolver::resolve_all",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::parsers::Cache",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::Cache",
+      "target": "crates::parsers::Cache::load",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::Cache",
+      "target": "crates::parsers::Cache::save",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::Cache",
+      "target": "crates::parsers::Cache::is_unchanged",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::parsers::collect_files",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::parsers::collect_files_recursive",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::parsers::analyze",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_file",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::path_to_module_id",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::node_text",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::extract_module_docstring",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::clean_docstring",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::get_decorators",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::get_first_string_child",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::process_module",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_import",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_import_from",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_class",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_dataclass_field",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_dataclass_annotated_field",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_function",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_params",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_function_body",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_call",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_assignment_in_func",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_annotated_assignment",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::python::parse_constant",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::parse_file",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::path_to_module_id",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::node_text",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::get_doc_comment",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::process_items",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::parse_struct",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::parse_enum",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::parse_trait",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::parse_impl",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::parse_function",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::parse_block",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::is_valid_callee",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::last_component",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::parse_call_expr",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::parse_method_call_expr",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::rust_lang::parse_use",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::analysis::GraphAnalysis",
+      "target": "__ext__.Vec<Vec<String>>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::analysis::GraphAnalysis",
+      "target": "__ext__.HashMap<String, NodeMetrics>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::analysis::GraphDiff",
+      "target": "__ext__.Vec<Node>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::analysis::GraphDiff",
+      "target": "__ext__.Vec<Edge>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::analysis::analyze",
+      "target": "crates::analysis::GraphAnalysis",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::analysis::diff",
+      "target": "crates::analysis::GraphDiff",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::analysis::focus",
+      "target": "crates::core::CodeGraph",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::analysis::git_diff_analyze",
+      "target": "__ext__.Result<GraphDiff>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::analysis::analyze",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::analysis::analyze",
+      "target": "__ext__.kosaraju_scc",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::analysis::analyze",
+      "target": "__ext__.from_edges",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::analysis::focus",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::analysis::git_diff_analyze",
+      "target": "__ext__.Err",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::analysis::git_diff_analyze",
+      "target": "__ext__.from_utf8_lossy",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::analysis::git_diff_analyze",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::analysis::git_diff_analyze",
+      "target": "crates::parsers::Resolver::resolve_all",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::analysis::git_diff_analyze",
+      "target": "__ext__.Ok",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "crates::core::Edge",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "crates::core::Node",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "crates::core::CodeGraph",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "__ext__.kosaraju_scc",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "__ext__.Deserialize",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "__ext__.Serialize",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "__ext__.Result",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "__ext__.HashMap",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "__ext__.VecDeque",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "__ext__.Path",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "__ext__.HashSet",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "crates::parsers::Language",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::analysis",
+      "target": "__ext__.NodeIndex",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "__ext__.Default",
+      "kind": "inherits"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "__ext__.App",
+      "kind": "inherits"
+    },
+    {
+      "source": "crates::app::main",
+      "target": "__ext__.Result<()>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AnalysisResult",
+      "target": "crates::core::CodeGraph",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AnalysisResult",
+      "target": "crates::analysis::GraphAnalysis",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AnalysisResult",
+      "target": "__ext__.Option<PathBuf>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "__ext__.String",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "crates::app::AppStatus",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "__ext__.Option<Sender<WorkerMsg>>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "__ext__.Option<Receiver<WorkerMsg>>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "__ext__.Option<AnalysisResult>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "__ext__.Option<String>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "__ext__.Watcher + Send>>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "__ext__.Option<Sender<()>>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AppState",
+      "target": "__ext__.Option<Receiver<()>>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AppState::default",
+      "target": "__ext__.Self",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::AppState::selected_languages",
+      "target": "__ext__.Vec<Language>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::run_analysis",
+      "target": "__ext__.Result<AnalysisResult>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::run_git_diff",
+      "target": "__ext__.Result<AnalysisResult>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::app::main",
+      "target": "__ext__.run_native",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::AppState::selected_languages",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::AppState::start_analysis",
+      "target": "__ext__.from",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::AppState::start_analysis",
+      "target": "__ext__.spawn",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::AppState::start_git_diff",
+      "target": "__ext__.from",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::AppState::start_git_diff",
+      "target": "__ext__.spawn",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::AppState::setup_watch",
+      "target": "__ext__.from",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::AppState::setup_watch",
+      "target": "__ext__.recommended_watcher",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::run_analysis",
+      "target": "__ext__.now",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::run_analysis",
+      "target": "crates::analysis::focus",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::run_analysis",
+      "target": "crates::analysis::analyze",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::run_analysis",
+      "target": "__ext__.Ok",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::run_git_diff",
+      "target": "__ext__.now",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::run_git_diff",
+      "target": "crates::analysis::analyze",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app::run_git_diff",
+      "target": "__ext__.Ok",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::app",
+      "target": "__ext__.RecursiveMode",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::app",
+      "target": "crates::core::CodeGraph",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::app",
+      "target": "__ext__.Path",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::app",
+      "target": "__ext__.Event",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::app",
+      "target": "__ext__.Watcher",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::app",
+      "target": "__ext__.egui",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::app",
+      "target": "crates::analysis::GraphAnalysis",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::app",
+      "target": "crates::parsers::Language",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::app",
+      "target": "__ext__.Receiver",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::app",
+      "target": "__ext__.Instant",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::app",
+      "target": "__ext__.PathBuf",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::app",
+      "target": "__ext__.self",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::app",
+      "target": "__ext__.Sender",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::core::NodeKind",
+      "target": "__ext__.Display",
+      "kind": "inherits"
+    },
+    {
+      "source": "crates::core::EdgeKind",
+      "target": "__ext__.Display",
+      "kind": "inherits"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "__ext__.Default",
+      "kind": "inherits"
+    },
+    {
+      "source": "crates::core::NodeKind::fmt",
+      "target": "__ext__.Result",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::EdgeKind::fmt",
+      "target": "__ext__.Result",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::Node",
+      "target": "__ext__.String",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::Node",
+      "target": "crates::core::NodeKind",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::Node",
+      "target": "__ext__.Option<String>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::Edge",
+      "target": "__ext__.String",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::Edge",
+      "target": "crates::core::EdgeKind",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "__ext__.StableDiGraph<Node, EdgeKind>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::CodeGraph",
+      "target": "__ext__.HashMap<String, NodeIndex>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::CodeGraph::default",
+      "target": "__ext__.Self",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::CodeGraph::new",
+      "target": "__ext__.Self",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::CodeGraph::add_node",
+      "target": "__ext__.NodeIndex",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::CodeGraph::get_node",
+      "target": "__ext__.Option<&Node>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::CodeGraph::stats",
+      "target": "crates::core::GraphStats",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::CodeGraph::to_serializable",
+      "target": "crates::core::SerializableGraph",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::CodeGraph::from_serializable",
+      "target": "__ext__.Self",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::SerializableGraph",
+      "target": "crates::core::GraphStats",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::SerializableGraph",
+      "target": "__ext__.Vec<Node>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::SerializableGraph",
+      "target": "__ext__.Vec<Edge>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::core::CodeGraph::default",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::core::CodeGraph::from_serializable",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::core",
+      "target": "__ext__.Serialize",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::core",
+      "target": "__ext__.HashMap",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::core",
+      "target": "__ext__.Deserialize",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::core",
+      "target": "__ext__.NodeIndex",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::core",
+      "target": "__ext__.StableDiGraph",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::export::html::export_html",
+      "target": "__ext__.Result<()>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::export::html::export_html",
+      "target": "__ext__.Ok",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::export::html",
+      "target": "crates::core::CodeGraph",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::export::html",
+      "target": "__ext__.Result",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::export::html",
+      "target": "crates::analysis::GraphAnalysis",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::export::html",
+      "target": "__ext__.Path",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::export::html",
+      "target": "crates::analysis::GraphDiff",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::export",
+      "target": "crates::export::html",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::export::export_json",
+      "target": "__ext__.Result<()>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::export::export_dot",
+      "target": "__ext__.Result<()>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::export::safe_dot_id",
+      "target": "__ext__.String",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::export::escape_dot",
+      "target": "__ext__.String",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::export::lighten",
+      "target": "__ext__.String",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::export::export_json",
+      "target": "__ext__.Ok",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::export::export_dot",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::export::export_dot",
+      "target": "__ext__.Ok",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::export",
+      "target": "crates::core::NodeKind",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::export",
+      "target": "__ext__.Path",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::export",
+      "target": "crates::core::EdgeKind",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::export",
+      "target": "__ext__.Result",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::export",
+      "target": "crates::core::CodeGraph",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::cpp::parse_file",
+      "target": "__ext__.Result<ParseContext>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::cpp::path_to_module_id",
+      "target": "__ext__.String",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::cpp::parse_file",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::cpp::parse_file",
+      "target": "crates::parsers::cpp::path_to_module_id",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::cpp::parse_file",
+      "target": "crates::parsers::cpp::process_translation_unit",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::cpp::parse_file",
+      "target": "__ext__.Ok",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::cpp::parse_class",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::cpp::parse_class",
+      "target": "crates::parsers::cpp::parse_class_body",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::cpp::parse_struct",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::cpp::parse_struct",
+      "target": "crates::parsers::cpp::parse_class_body",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::cpp::parse_function",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::cpp::parse_function",
+      "target": "crates::parsers::cpp::parse_compound_statement",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::cpp::parse_declaration",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "__ext__.Result",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::core::EdgeKind",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "__ext__.Node as TsNode",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::core::NodeKind",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::core::Node",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::ParseContext",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "__ext__.Parser",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::parsers::PendingCall",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::cpp",
+      "target": "crates::core::CodeGraph",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::parsers::cpp",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::parsers::python",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::parsers::rust_lang",
+      "kind": "contains"
+    },
+    {
+      "source": "crates::parsers::PendingCall",
+      "target": "__ext__.String",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::PendingCall",
+      "target": "__ext__.Option<String>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::ParseContext",
+      "target": "__ext__.String",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::ParseContext",
+      "target": "__ext__.HashMap<String, String>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::ParseContext",
+      "target": "__ext__.Vec<PendingCall>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::ParseContext",
+      "target": "__ext__.Vec<(String, String)>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::ParseContext",
+      "target": "__ext__.HashMap<String, HashMap<String, String>>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::infer_external_kind",
+      "target": "crates::core::NodeKind",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::Resolver",
+      "target": "__ext__.HashMap<String, Vec<String>>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::Resolver::build",
+      "target": "__ext__.Self",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::Resolver::resolve_name",
+      "target": "__ext__.Option<String>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::Cache",
+      "target": "__ext__.HashMap<String, String>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::Cache",
+      "target": "__ext__.Option<String>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::Cache::load",
+      "target": "__ext__.Option<Self>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::collect_files",
+      "target": "__ext__.Vec<(PathBuf, Language)>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::analyze",
+      "target": "__ext__.Result<CodeGraph>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::Resolver::build",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::Resolver::resolve_name",
+      "target": "__ext__.Some",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::Resolver::resolve_all",
+      "target": "crates::parsers::Resolver::build",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::Cache::save",
+      "target": "__ext__.write",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::collect_files",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::collect_files",
+      "target": "crates::parsers::collect_files_recursive",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::collect_files_recursive",
+      "target": "__ext__.read_dir",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::analyze",
+      "target": "crates::parsers::Cache::load",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::analyze",
+      "target": "crates::parsers::collect_files",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::analyze",
+      "target": "__ext__.Ok",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::analyze",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::analyze",
+      "target": "crates::parsers::Resolver::resolve_all",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "__ext__.PathBuf",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "__ext__.HashMap",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "__ext__.Deserialize",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "__ext__.Result",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::core::EdgeKind",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "__ext__.Serialize",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::core::Node",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "__ext__.Path",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::core::NodeKind",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers",
+      "target": "crates::core::CodeGraph",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::python::parse_file",
+      "target": "__ext__.Result<ParseContext>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::python::path_to_module_id",
+      "target": "__ext__.String",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::python::extract_module_docstring",
+      "target": "__ext__.Option<String>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::python::clean_docstring",
+      "target": "__ext__.String",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::python::get_decorators",
+      "target": "__ext__.Vec<String>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::python::get_first_string_child",
+      "target": "__ext__.Option<String>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::python::parse_file",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_file",
+      "target": "crates::parsers::python::path_to_module_id",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_file",
+      "target": "crates::parsers::python::process_module",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_file",
+      "target": "__ext__.Ok",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::extract_module_docstring",
+      "target": "crates::parsers::python::node_text",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::extract_module_docstring",
+      "target": "__ext__.Some",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::get_decorators",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_import_from",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_class",
+      "target": "crates::parsers::python::get_decorators",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_class",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_dataclass_field",
+      "target": "crates::parsers::python::node_text",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_dataclass_annotated_field",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_function",
+      "target": "crates::parsers::python::get_decorators",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_function",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_function",
+      "target": "crates::parsers::python::parse_params",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_function",
+      "target": "crates::parsers::python::parse_function_body",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_call",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_assignment_in_func",
+      "target": "__ext__.Some",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python::parse_assignment_in_func",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::PendingCall",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::core::Node",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::core::CodeGraph",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::core::NodeKind",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::core::EdgeKind",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "__ext__.Result",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "__ext__.Parser",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "__ext__.Node as TsNode",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers::python",
+      "target": "crates::parsers::ParseContext",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_file",
+      "target": "__ext__.Result<ParseContext>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::rust_lang::path_to_module_id",
+      "target": "__ext__.String",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::rust_lang::get_doc_comment",
+      "target": "__ext__.Option<String>",
+      "kind": "uses_type"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_file",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_file",
+      "target": "crates::parsers::rust_lang::path_to_module_id",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_file",
+      "target": "crates::parsers::rust_lang::process_items",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_file",
+      "target": "__ext__.Ok",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::get_doc_comment",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_struct",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_struct",
+      "target": "crates::parsers::rust_lang::get_doc_comment",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_enum",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_enum",
+      "target": "crates::parsers::rust_lang::get_doc_comment",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_trait",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_trait",
+      "target": "crates::parsers::rust_lang::get_doc_comment",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_trait",
+      "target": "crates::parsers::rust_lang::process_items",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_impl",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_impl",
+      "target": "crates::parsers::rust_lang::process_items",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_function",
+      "target": "crates::core::CodeGraph::new",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_function",
+      "target": "crates::parsers::rust_lang::get_doc_comment",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_function",
+      "target": "crates::parsers::rust_lang::parse_block",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang::parse_use",
+      "target": "crates::parsers::rust_lang::node_text",
+      "kind": "calls"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::ParseContext",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::core::EdgeKind",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "__ext__.Result",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::core::NodeKind",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::core::Node",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "__ext__.Parser",
+      "kind": "external_dep"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::core::CodeGraph",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "crates::parsers::PendingCall",
+      "kind": "imports"
+    },
+    {
+      "source": "crates::parsers::rust_lang",
+      "target": "__ext__.Node as TsNode",
+      "kind": "external_dep"
+    }
+  ]
+}
